@@ -1,0 +1,3 @@
+- insert:
+    - id: automations-app
+      name: '@wha1echai/dsh-automations-app'
