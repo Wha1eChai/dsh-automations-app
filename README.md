@@ -1,6 +1,6 @@
 # dsh-automations-app
 
-Historical example. Package `@dshapps/automations-app`. App ID `dshapps.automations`, `surface: 'panel'`. Superseded by [ADR 0007](https://github.com/Wha1eChai/dsh-webpage/blob/main/docs/adr/0007-automations-are-trigger-to-agent-loop.md) and removed from the standing web profile.
+Historical example. Package `@dshapps/automations-app`. App ID `dshapps.automations`, `surface: 'panel'`. Superseded by [ADR 0007](https://github.com/dshapps/dsh-webpage/blob/main/docs/adr/0007-automations-are-trigger-to-agent-loop.md) and removed from the standing web profile.
 
 This is a panel over the community [titanwings/dsh-automation](https://github.com/titanwings/dsh-automation) Host. That Host is optional and is never auto-installed. The App talks to the existing `/dsh-automation` RPC channel; it does not start an agent. ADR 0007 records that a future Automations App would be a recipe — trigger plus prompt plus permission boundary producing a new Session — not a cron form.
 
@@ -41,4 +41,4 @@ On machines where nested `pnpm run` resolves pnpm `11.0.9` against `packageManag
 
 ## Family
 
-The platform repository [dsh-webpage](https://github.com/Wha1eChai/dsh-webpage) holds the kernel, the authoring contract, and the docs. Start a new App from [dsh-app-template](https://github.com/Wha1eChai/dsh-app-template). Apps live in their own repositories on purpose.
+The platform repository [dsh-webpage](https://github.com/dshapps/dsh-webpage) holds the kernel, the authoring contract, and the docs. Start a new App from [dsh-app-template](https://github.com/dshapps/dsh-app-template). Apps live in their own repositories on purpose.
