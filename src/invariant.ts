@@ -1,7 +1,7 @@
 import type { Context } from '@deepseek-ai/cordis'
 import type { InvariantInstaller } from '@deepseek-ai/dsh-invariants'
 
-const PACKAGE_NAME = '@wha1echai/dsh-automations-app'
+const PACKAGE_NAME = '@dshapps/automations-app'
 
 export const name = 'dsh-automations-app-invariant'
 export const inject = ['invariants']

@@ -5,7 +5,7 @@ export interface AutomationsAppOwner {
 
 declare module '@deepseek-ai/dsh-client-ui-slots' {
   interface SlotMap {
-    'wha1echai.automations.actions': {
+    'dshapps.automations.actions': {
       kind: 'list'
       scope: 'root'
       owner: AutomationsAppOwner

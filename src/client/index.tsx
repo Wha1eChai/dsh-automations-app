@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
-import type { AppDescriptor } from '@wha1echai/dsh-webpage/client'
+import type { AppDescriptor } from '@dshapps/webpage/client'
 import type { ClientRpc } from './vendor/runtime.js'
 
 import { en, zh } from './locales.js'
@@ -12,7 +12,7 @@ export const AutomationsAppBody = lazy(async () => {
 })
 
 const descriptor = Object.freeze({
-  id: 'wha1echai.automations',
+  id: 'dshapps.automations',
   label: 'Automations',
   description: 'Unattended rules over titanwings/dsh-automation.',
   order: 40,
@@ -21,9 +21,9 @@ const descriptor = Object.freeze({
 }) satisfies AppDescriptor
 
 const LOCALE_NAMESPACE = 'automations'
-const APP_ID = 'wha1echai.automations'
+const APP_ID = 'dshapps.automations'
 
-export const name = '@wha1echai/dsh-automations-app'
+export const name = '@dshapps/automations-app'
 export const inject = ['pages', 'slots', 'locale', 'sessions', 'connection']
 
 type AutomationsContext = ClientContext & {
@@ -39,7 +39,7 @@ export function apply(ctx: AutomationsContext): void {
       key: APP_ID,
       locale: LOCALE_NAMESPACE,
       children: {
-        'wha1echai.automations.actions': { kind: 'list', scope: 'root' },
+        'dshapps.automations.actions': { kind: 'list', scope: 'root' },
       },
       inject: () => ({
         hooks: { sessions: ctx.sessions.list },

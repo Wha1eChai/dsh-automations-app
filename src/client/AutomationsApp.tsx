@@ -2,8 +2,8 @@ import { useEffect, useMemo, useSyncExternalStore, type ReactNode } from 'react'
 import { Button } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { SessionListState } from '@deepseek-ai/dsh-client-runtime/client'
 import type { HostObservable, InjectFace, PropsLocale, PropsRenderSlots } from '@deepseek-ai/dsh-client-ui-slots'
-import type { WebpageAppSlotProps } from '@wha1echai/dsh-webpage/client'
-import { AppEmpty, AppList, AppPage, AppRow } from '@wha1echai/dsh-webpage/ui'
+import type { WebpageAppSlotProps } from '@dshapps/webpage/client'
+import { AppEmpty, AppList, AppPage, AppRow } from '@dshapps/webpage/ui'
 import type { AutomationsAppOwner } from '../index.js'
 import type { ClientRpc } from './vendor/runtime.js'
 import { createAutomationRuntime } from './vendor/runtime.js'
@@ -17,7 +17,7 @@ interface AutomationsAppInject {
 
 export type AutomationsAppProps =
   WebpageAppSlotProps
-  & PropsRenderSlots<'wha1echai.automations.actions'>
+  & PropsRenderSlots<'dshapps.automations.actions'>
   & PropsLocale<'automations'>
   & InjectFace<AutomationsAppInject>
 
@@ -27,7 +27,7 @@ type Translate = AutomationsAppProps['t']
 export function AutomationsApp({ appPath, renderSlot, t, useSessions, rpc }: AutomationsAppProps): ReactNode {
   const sessionId = useSessions(state => state.current)
   const owner: AutomationsAppOwner = Object.freeze({ appPath })
-  const actions = renderSlot('wha1echai.automations.actions', owner)
+  const actions = renderSlot('dshapps.automations.actions', owner)
 
   if (sessionId === undefined) {
     return (

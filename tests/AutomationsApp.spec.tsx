@@ -53,7 +53,7 @@ function props(
   renderSlot = vi.fn(() => null),
 ): AutomationsAppProps {
   return {
-    appId: 'wha1echai.automations',
+    appId: 'dshapps.automations',
     appPath: '/',
     search: '',
     hash: '',
@@ -117,7 +117,7 @@ describe('AutomationsApp', () => {
     const renderSlot = vi.fn(() => <button type="button">Kind action</button>)
     render(<AutomationsApp {...props('session-1', { call }, renderSlot)} />)
     await waitFor(() => expect(screen.getByRole('button', { name: 'Kind action' })).toBeTruthy())
-    expect(renderSlot).toHaveBeenCalledWith('wha1echai.automations.actions', { appPath: '/' })
+    expect(renderSlot).toHaveBeenCalledWith('dshapps.automations.actions', { appPath: '/' })
   })
 
   it('pauses, resumes, and runs now, swallowing RPC failures', async () => {

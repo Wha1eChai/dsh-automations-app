@@ -31,16 +31,16 @@ describe('Automations App composition', () => {
       effect,
     } as never)
 
-    expect(name).toBe('@wha1echai/dsh-automations-app')
+    expect(name).toBe('@dshapps/automations-app')
     expect(inject).toEqual(['pages', 'slots', 'locale', 'sessions', 'connection'])
     expect(pageRegister).toHaveBeenCalledWith(expect.objectContaining({
-      id: 'wha1echai.automations',
+      id: 'dshapps.automations',
       surface: 'panel',
     }))
     expect(localeRegister).toHaveBeenCalledWith('automations', { zh, en })
     expect(slotRegister).toHaveBeenCalledWith(expect.objectContaining({
       name: 'webpage.app',
-      key: 'wha1echai.automations',
+      key: 'dshapps.automations',
     }), AutomationsAppBody)
 
     const face = (slotRegister.mock.calls[0]![0] as { inject(): { hooks: { sessions: unknown }; rpc: unknown } }).inject()
@@ -65,7 +65,7 @@ describe('Automations App host and invariant entries', () => {
     expect(invariantInject).toEqual(['invariants'])
     const register = vi.fn(() => () => {})
     const disposer = await applyInvariant({ invariants: { register } } as never)
-    expect(register).toHaveBeenCalledWith('@wha1echai/dsh-automations-app', expect.any(Function))
+    expect(register).toHaveBeenCalledWith('@dshapps/automations-app', expect.any(Function))
     register.mock.calls[0]![1]()
     disposer()
   })

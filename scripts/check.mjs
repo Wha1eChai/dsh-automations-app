@@ -17,7 +17,7 @@ const clientExternals = [
   '@deepseek-ai/dsh-client-runtime/client',
 ]
 const expectedClientInject = [
-  '@wha1echai/dsh-webpage',
+  '@dshapps/webpage',
   '@deepseek-ai/dsh-client-locale',
   '@deepseek-ai/dsh-client-runtime',
   '@deepseek-ai/dsh-client-ui-primitives',
@@ -58,7 +58,7 @@ async function sourceFiles(dir) {
 
 async function assertManifest() {
   const manifest = await json(join(root, 'package.json'))
-  assert(manifest.name === '@wha1echai/dsh-automations-app', 'package name changed')
+  assert(manifest.name === '@dshapps/automations-app', 'package name changed')
   assert(manifest.dsh?.bundle?.patch === './cordis.patch.yml', 'dsh.bundle.patch is missing')
   assert(JSON.stringify(manifest.dsh?.client?.inject) === JSON.stringify(expectedClientInject), 'dsh.client.inject changed')
   for (const [name, version] of Object.entries({ ...manifest.peerDependencies, ...manifest.devDependencies })) {
@@ -76,8 +76,8 @@ async function assertSources() {
   const preset = await readFile(join(root, 'tsdown.client.ts'), 'utf8')
   assert(preset.includes('codeSplitting: false'), 'client preset must disable code splitting')
   const patch = await readFile(join(root, 'cordis.patch.yml'), 'utf8')
-  assert(patch.includes("name: '@wha1echai/dsh-automations-app'"), 'pack must list automations-app')
-  assert(!patch.includes("name: '@wha1echai/dsh-webpage'"), 'must not re-insert webpage')
+  assert(patch.includes("name: '@dshapps/automations-app'"), 'pack must list automations-app')
+  assert(!patch.includes("name: '@dshapps/webpage'"), 'must not re-insert webpage')
   assert(!patch.includes('@dsh-external/dsh-automation'), 'must not re-insert titanwings host')
 }
 
@@ -85,7 +85,7 @@ async function assertBuilt() {
   const clientPath = join(lib, 'client.js')
   assert(existsSync(join(lib, 'index.js')) && existsSync(clientPath), 'built artifacts are missing')
   const consumerRequire = createRequire(join(root, 'probe.cjs'))
-  assert(consumerRequire.resolve('@wha1echai/dsh-automations-app') === join(lib, 'index.js'), 'root export does not resolve')
+  assert(consumerRequire.resolve('@dshapps/automations-app') === join(lib, 'index.js'), 'root export does not resolve')
   const nodeModule = await import(`${pathToFileURL(join(lib, 'index.js')).href}?automations=${Date.now()}`)
   assert(JSON.stringify(Object.keys(nodeModule).sort()) === '["apply"]', `Node exports must be named apply only, got ${Object.keys(nodeModule)}`)
   const client = await readFile(clientPath, 'utf8')
