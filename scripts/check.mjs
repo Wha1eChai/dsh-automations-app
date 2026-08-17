@@ -23,7 +23,7 @@ const expectedClientInject = [
   '@deepseek-ai/dsh-client-ui-primitives',
 ]
 const packedAllowlist = [
-  'package/package.json', 'package/README.md', 'package/LICENSE', 'package/NOTICE',
+  'package/package.json', 'package/README.md', 'package/README.zh.md', 'package/LICENSE', 'package/NOTICE',
   'package/cordis.patch.yml',
   'package/lib/index.js', 'package/lib/invariant.js', 'package/lib/client.js', 'package/lib/client.js.map',
   'package/lib/types/index.d.ts', 'package/lib/types/invariant.d.ts',
